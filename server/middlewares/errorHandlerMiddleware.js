@@ -1,5 +1,5 @@
 const errorHandler = (err, req, res, next) => {
-  console.error(err.stack);
+  console.error("Error:", err.stack);
 
   // Check if the error is a custom application error with a defined status code
   if (err.statusCode) {
