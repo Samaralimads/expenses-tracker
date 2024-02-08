@@ -1,10 +1,10 @@
 const router = require("express").Router();
-const authMiddleware = require("../middlewares/authMiddleware");
 const Transaction = require("../models/Transaction");
+const Category = require("../models/Category");
 
 // GET /api/transactions
 // Get all transactions of the current user
-router.get("/transactions", authMiddleware, async (req, res, next) => {
+router.get("/", async (req, res, next) => {
   try {
     const transactions = await Transaction.find({ userId: req.user.id });
     res.json(transactions);
@@ -13,9 +13,24 @@ router.get("/transactions", authMiddleware, async (req, res, next) => {
   }
 });
 
+// GET /api/transactions/:categoryId
+// Get transactions filtered by category
+router.get("/:categoryId", async (req, res, next) => {
+  try {
+    const categoryId = req.params.categoryId;
+    const transactions = await Transaction.find({
+      userId: req.user._id,
+      category: categoryId,
+    });
+    res.json(transactions);
+  } catch (err) {
+    next(err);
+  }
+});
+
 // GET /api/transactions/:id
 // Get a specific transaction of the current user
-router.get("/transactions/:id", authMiddleware, async (req, res) => {
+router.get("/:id", async (req, res) => {
   try {
     const transaction = await Transaction.findOne({
       _id: req.params.id,
@@ -33,9 +48,15 @@ router.get("/transactions/:id", authMiddleware, async (req, res) => {
 
 // POST /api/transactions
 // Add a new transaction
-router.post("/transactions", authMiddleware, async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const { description, amount, date, category } = req.body;
+    const categoryObject = await Category.findOne({ _id: category });
+    if (!categoryObject) {
+      return res.status(400).json({ message: "Invalid category" });
+    }
+    const categoryId = categoryObject._id;
+
     const newTransaction = new Transaction({
       description,
       amount,
@@ -54,7 +75,7 @@ router.post("/transactions", authMiddleware, async (req, res, next) => {
 
 // PUT /api/transactions/:id
 // Updates transaction
-router.put("/transactions/:id", authMiddleware, async (req, res, next) => {
+router.put("/:id", async (req, res, next) => {
   const { description, amount, date, category } = req.body;
   try {
     let transaction = await Transaction.findById(req.params.id);
@@ -66,7 +87,7 @@ router.put("/transactions/:id", authMiddleware, async (req, res, next) => {
     }
     transaction = await Transaction.findByIdAndUpdate(
       req.params.id,
-      { $set: { description, amount, date, category } },
+      { description, amount, date, category },
       { new: true }
     );
     res.json(transaction);
@@ -77,7 +98,7 @@ router.put("/transactions/:id", authMiddleware, async (req, res, next) => {
 
 // DELETE /api/transactions/:id
 // Delete a transaction
-router.delete("/transactions/:id", authMiddleware, async (req, res, next) => {
+router.delete("/:id", async (req, res, next) => {
   try {
     let transaction = await Transaction.findById(req.params.id);
     if (!transaction) {

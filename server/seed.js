@@ -1,20 +1,18 @@
 const mongoose = require("mongoose");
 const Category = require("./models/Category");
 
-mongoose.connect("mongodb://localhost:27017/expense-tracker-db", {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect("mongodb://localhost:27017/expense-tracker-db");
 
 const categories = [
-  { name: "Housing", icon: "house_icon.png" }, //REMEMBER TO UPDATE ICONS
+  { name: "Housing", icon: "house_icon.png" },
   { name: "Utilities", icon: "bills_icon.png" },
   { name: "Groceries", icon: "groceries_icon.png" },
 ];
 
 // Populate categories
 Category.insertMany(categories)
-  .then(() => {
+  .then((cat) => {
+    console.log(cat);
     console.log("Categories populated");
     mongoose.connection.close();
   })
