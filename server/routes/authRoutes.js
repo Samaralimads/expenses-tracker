@@ -3,7 +3,6 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const salt = 12;
 const User = require("../models/User");
-const authMiddleware = require("../middlewares/authMiddleware");
 
 // POST /api/auth/signup
 // Register a new user
@@ -76,8 +75,7 @@ router.post("/login", async (req, res, next) => {
 
 // GET /api/auth/user
 // Get user data
-router.get("/user", authMiddleware, (req, res) => {
-  console.log("User:", req.user);
+router.get("/verify", (req, res) => {
   res.json(req.user);
 });
 
