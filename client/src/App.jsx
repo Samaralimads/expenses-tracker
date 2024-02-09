@@ -19,21 +19,26 @@ function App() {
     <div className="App">
       <Routes>
         <Route element={<IsNotAuthenticated />}>
-          <Route element={<Header />} />
-          <Route path="/" element={<LandingPage />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/login" element={<Login />} />
+          <Route element={<Header />}>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/login" element={<Login />} />
+          </Route>
         </Route>
 
         <Route element={<IsAuthenticated />}>
-          <Route element={<Sidebar />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/transactions" element={<Transactions />} />
-          <Route
-            path="/transactions/edit/:transactionId"
-            element={<EditTransaction />}
-          />
-          <Route path="/transactions/create" element={<CreateTransaction />} />
+          <Route element={<Sidebar />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/transactions" element={<Transactions />} />
+            <Route
+              path="/transactions/edit/:transactionId"
+              element={<EditTransaction />}
+            />
+            <Route
+              path="/transactions/create"
+              element={<CreateTransaction />}
+            />
+          </Route>
         </Route>
       </Routes>
       <Footer />

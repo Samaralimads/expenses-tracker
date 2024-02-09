@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Sidebar.css";
+import { Outlet, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../context/AuthContext";
 
 function Sidebar() {
-  return <div>Sidebar</div>;
+  const navigate = useNavigate();
+  const { logOutUser } = useContext(AuthContext);
+
+  const handleLogout = () => {
+    logOutUser();
+
+    navigate("/login");
+  };
+
+  return (
+    <div>
+      Sidebar
+      <button onClick={handleLogout}>Logout</button>
+      <Outlet />
+    </div>
+  );
 }
 
 export default Sidebar;
