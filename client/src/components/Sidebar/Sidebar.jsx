@@ -15,8 +15,10 @@ function Sidebar() {
 
   return (
     <div>
-      Sidebar
-      <button onClick={handleLogout}>Logout</button>
+      <div>
+        sidebar
+        <button onClick={handleLogout}>Logout</button>
+      </div>
       <Outlet />
     </div>
   );
