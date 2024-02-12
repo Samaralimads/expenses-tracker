@@ -50,7 +50,7 @@ router.get("/:id", async (req, res) => {
 // Add a new transaction
 router.post("/", async (req, res, next) => {
   try {
-    const { description, amount, date, category } = req.body;
+    const { description, amount, date, category, type } = req.body;
     const categoryObject = await Category.findOne({ _id: category });
     if (!categoryObject) {
       return res.status(400).json({ message: "Invalid category" });
@@ -62,6 +62,7 @@ router.post("/", async (req, res, next) => {
       amount,
       date,
       category,
+      type,
       userId: req.user.id,
     });
     const transaction = await newTransaction.save();

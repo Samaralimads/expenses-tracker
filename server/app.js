@@ -12,6 +12,7 @@ const authMiddleware = require("./middlewares/authMiddleware");
 // Import routes
 const authRoutes = require("./routes/authRoutes");
 const transactionRoutes = require("./routes/transactionRoutes");
+const categoryRoutes = require("./routes/categoryRoutes");
 
 //Import the provided files with JSON data
 const User = require("./models/User");
@@ -37,8 +38,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //ROUTES
-app.use("/api/auth", authRoutes); // Authentication routes
-app.use("/api/transactions", authMiddleware, transactionRoutes); // Protected transaction routes (require authentication)
+app.use("/api/auth", authRoutes);
+app.use("/api/transactions", authMiddleware, transactionRoutes);
+app.use("/api/categories", categoryRoutes);
 
 //ERROR HANDLING
 app.use(errorHandler);

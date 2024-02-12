@@ -10,6 +10,7 @@ const transactionSchema = new mongoose.Schema({
     required: true,
   },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  type: String,
 });
 
 module.exports = mongoose.model("Transaction", transactionSchema);

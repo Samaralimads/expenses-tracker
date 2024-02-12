@@ -6,21 +6,21 @@ function Header() {
   return (
     <div>
       <header className="header">
-        <div className="logo-container">
-          <Link to="/" className="logo-link">
-            <img src="/ZenithLogo.png" alt="Logo" className="logo" />
+        <div className="header-logo-container">
+          <Link to="/" className="header-logo-link">
+            <img src="/ZenithLogo.png" alt="Logo" className="header-logo" />
           </Link>
           <span className="brand-name">ZENITH</span>
         </div>
-        <nav className="nav-links">
+        <nav className="header-links">
           <ul>
             <li>
-              <Link to="/" className="nav-link">
+              <Link to="/" className="header-link">
                 Home
               </Link>
             </li>
             <li>
-              <Link to="/login" className="nav-link">
+              <Link to="/login" className="header-link">
                 Login
               </Link>
             </li>

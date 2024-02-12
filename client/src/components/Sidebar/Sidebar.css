@@ -1,0 +1,58 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: #f2f2f2;
+  color: #2d2c2b;
+  padding: 20px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.logo {
+  width: 60px;
+  margin-right: 10px;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  margin-bottom: 10px;
+}
+
+.sidebar a {
+  text-decoration: none;
+  color: #2d2c2b;
+  padding: 10px;
+  display: block;
+}
+
+.welcome-back {
+  color: #2d2c2b;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+.user-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-container .avatar {
+  margin-right: 10px; /* Add some space between avatar and username */
+}
+
+.user-container .username {
+  font-weight: bold; /* Make the username bold if needed */
+}

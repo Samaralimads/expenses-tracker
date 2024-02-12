@@ -1,0 +1,14 @@
+/* Footer.css */
+
+.footer {
+  background-color: #ffffff;
+  padding: 8px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.github-logo {
+  width: 30px;
+  height: auto;
+}
