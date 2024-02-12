@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Transactions.css";
 import myApi from "../../api/apiHandler";
+import { Link } from "react-router-dom";
 
 function Transactions() {
   const [categories, setCategories] = useState([]);
@@ -49,11 +50,13 @@ function Transactions() {
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
-    <div>
-      <div>
+    <div className="main-content">
+      <h2>Categories</h2>
+      <div className="categories-container">
         {categories.length > 0 &&
           categories.map((category) => (
             <button
+              className="category-button"
               key={category._id}
               onClick={() => handleCategoryClick(category._id)}
             >
@@ -61,19 +64,25 @@ function Transactions() {
               {category.name}
             </button>
           ))}
+        <Link to="/transactions/create" style={{ textDecoration: "none" }}>
+          <button className="create-transaction-button">
+            <img src="/plus.png" alt="Create Transaction" />
+            Add New Transaction
+          </button>
+        </Link>
       </div>
 
-      <div>
-        {/* Display transactions */}
+      <h2>Transactions</h2>
+      <div className="transaction-container">
         {currentTransactions.map((transaction) => (
-          <div key={transaction._id}>
+          <div className="transaction-item" key={transaction._id}>
             <img
               src={getCategoryIcon(transaction.category)}
               alt={transaction.description}
             />
             <div>{transaction.description}</div>
             <div>{new Date(transaction.date).toLocaleDateString()}</div>
-            <div>$ {transaction.amount}</div>
+            <div>€ {transaction.amount}</div>
           </div>
         ))}
       </div>

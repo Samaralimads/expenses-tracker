@@ -25,7 +25,7 @@ function Header() {
               </Link>
             </li>
             <li>
-              <Link to="/signup" className="signup-btn">
+              <Link to="/signup" className="header-signup-btn">
                 Sign Up
               </Link>
             </li>

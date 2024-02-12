@@ -75,7 +75,9 @@ function Signup() {
           />
         </div>
 
-        <button type="submit">Sign Up</button>
+        <button className="signup-btn" type="submit">
+          Sign Up
+        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
