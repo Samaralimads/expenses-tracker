@@ -15,7 +15,7 @@ router.get("/", async (req, res, next) => {
 
 // GET /api/transactions/:categoryId
 // Get transactions filtered by category
-router.get("/:categoryId", async (req, res, next) => {
+router.get("/category/:categoryId", async (req, res, next) => {
   try {
     const categoryId = req.params.categoryId;
     const transactions = await Transaction.find({
@@ -77,7 +77,7 @@ router.post("/", async (req, res, next) => {
 // PUT /api/transactions/:id
 // Updates transaction
 router.put("/:id", async (req, res, next) => {
-  const { description, amount, date, category } = req.body;
+  const { description, amount, date, category, type } = req.body;
   try {
     let transaction = await Transaction.findById(req.params.id);
     if (!transaction) {
@@ -88,7 +88,7 @@ router.put("/:id", async (req, res, next) => {
     }
     transaction = await Transaction.findByIdAndUpdate(
       req.params.id,
-      { description, amount, date, category },
+      { description, amount, date, category, type },
       { new: true }
     );
     res.json(transaction);

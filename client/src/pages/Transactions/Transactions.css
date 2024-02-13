@@ -44,7 +44,7 @@
 }
 
 .category-button:hover,
-.create-transaction-button:hover:active {
+.create-transaction-button:hover {
   box-shadow: #422800 2px 2px 0 0;
   transform: translate(1px, 1px);
 }

@@ -9,6 +9,7 @@ function CreateTransaction() {
   const [date, setDate] = useState("");
   const [categories, setCategories] = useState([]);
   const [isExpense, setIsExpense] = useState(false);
+  const [isIncome, setIsIncome] = useState(false);
 
   useEffect(() => {
     myApi
@@ -21,21 +22,44 @@ function CreateTransaction() {
       });
   }, []);
 
+  const handleExpenseChange = (checked) => {
+    setIsExpense(checked);
+    if (checked) {
+      setIsIncome(false);
+    }
+  };
+
+  const handleIncomeChange = (checked) => {
+    setIsIncome(checked);
+    if (checked) {
+      setIsExpense(false);
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      let amountValue = parseFloat(amount);
+      if (isExpense) {
+        amountValue *= -1;
+      }
+
       const transactionData = {
         description,
         category,
-        amount: isExpense ? amount * -1 : amount, // Convert amount to negative value
+        amount: amountValue,
         date,
+        type: isExpense ? "expense" : isIncome ? "income" : "unknown",
       };
       await myApi.post("/api/transactions", transactionData);
+
       // Clear form after
       setDescription("");
       setCategory("");
       setAmount("");
       setDate("");
+      setIsExpense(false);
+      setIsIncome(false);
       //ADD LATER navigate the user to transactions page or show a success message
     } catch (error) {
       console.error("Error adding transaction:", error);
@@ -94,7 +118,16 @@ function CreateTransaction() {
             type="checkbox"
             checked={isExpense}
             id="expense"
-            onChange={(e) => setIsExpense(!isExpense)}
+            onChange={(e) => handleExpenseChange(e.target.checked)}
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="income">Is it an income?</label>
+          <input
+            type="checkbox"
+            checked={isIncome}
+            id="income"
+            onChange={(e) => handleIncomeChange(e.target.checked)}
           />
         </div>
         <button type="submit">Add</button>
