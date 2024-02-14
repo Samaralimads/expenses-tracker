@@ -56,23 +56,8 @@
   height: 35px;
 }
 
-/* Styling for transaction items */
-.transaction-item {
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  padding: 10px;
-  margin: 5px;
-  display: flex;
-  flex-direction: row;
-  height: 4rem;
-  align-items: center;
-  justify-content: space-between;
-}
+/* Styling for transactions */
 
-.transaction-item img {
-  width: 30px;
-  height: 30px;
-}
 /* Pagination */
 .pagination {
   display: flex;

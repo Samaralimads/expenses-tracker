@@ -3,10 +3,12 @@ const Transaction = require("../models/Transaction");
 const Category = require("../models/Category");
 
 // GET /api/transactions
-// Get all transactions of the current user
+// Get all transactions of the current user, sorted by date
 router.get("/", async (req, res, next) => {
   try {
-    const transactions = await Transaction.find({ userId: req.user.id });
+    const transactions = await Transaction.find({ userId: req.user.id }).sort({
+      date: "desc",
+    });
     res.json(transactions);
   } catch (err) {
     next(err);

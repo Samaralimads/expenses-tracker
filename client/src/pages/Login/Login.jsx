@@ -50,7 +50,6 @@ function Login() {
             id="email"
             value={email}
             onChange={handleEmail}
-            autoComplete="off"
           />
         </div>
         <div className="form-group">
