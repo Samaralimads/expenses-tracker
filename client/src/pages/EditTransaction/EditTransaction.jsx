@@ -74,7 +74,7 @@ function EditTransaction() {
       setTimeout(() => {
         setSuccessMessage("");
         navigate(`/transactions`);
-      }, 3000);
+      }, 2000);
     } catch (error) {
       console.error(error);
     }
@@ -86,7 +86,7 @@ function EditTransaction() {
   };
 
   return (
-    <div className="edit-transaction">
+    <div className="main-content">
       <h2>Edit Transaction</h2>
       <form onSubmit={handleSubmit}>
         <div className="form-group">

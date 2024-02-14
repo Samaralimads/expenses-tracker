@@ -65,7 +65,7 @@ function Transactions() {
           ))}
         <Link to="/transactions/create" style={{ textDecoration: "none" }}>
           <button className="create-transaction-button">
-            <img src="/plus.png" alt="Create Transaction" />
+            <img src="/add.png" alt="Create Transaction" />
             Add New Transaction
           </button>
         </Link>

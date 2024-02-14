@@ -4,10 +4,13 @@ const Category = require("./models/Category");
 mongoose.connect("mongodb://localhost:27017/expense-tracker-db");
 
 const categories = [
-  { name: "Housing", icon: "/home.png" },
-  { name: "Utilities", icon: "/bill.png" },
-  { name: "Groceries", icon: "/groceries.png" },
-  { name: "Shopping", icon: "/shopping-bag.png" },
+  { name: "Housing", icon: "/home1.png" },
+  { name: "Utilities", icon: "/tools.png" },
+  { name: "Groceries", icon: "ingredients.png" },
+  { name: "Shopping", icon: "/shoppingBag.png" },
+  { name: "Transportation", icon: "/car.png" },
+  { name: "Entertainment", icon: "/entertainment.png" },
+  { name: "Others", icon: "/other.png" },
 ];
 
 Category.deleteMany({})
