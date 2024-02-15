@@ -128,7 +128,7 @@ function Dashboard() {
             "rgba(255, 159, 64, 1)",
             "rgba(255, 99, 132, 1)",
           ],
-          borderWidth: 1,
+          borderWidth: 1.5,
         },
       ],
     };
@@ -137,7 +137,7 @@ function Dashboard() {
   useEffect(() => {
     const lineChartContext = lineChartRef.current.getContext("2d");
     if (lineChartRef.current.chart) {
-      lineChartRef.current.chart.destroy(); // Destroy existing chart instance
+      lineChartRef.current.chart.destroy(); // Destroy existing chart
     }
     lineChartRef.current.chart = new Chart(lineChartContext, {
       type: "line",
