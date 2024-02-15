@@ -41,7 +41,9 @@ function Sidebar() {
             </li>
           </ul>
         </div>
-        <button onClick={handleLogout}>Logout</button>
+        <button onClick={handleLogout} className="logout-btn">
+          Logout
+        </button>
       </div>
 
       <Outlet />

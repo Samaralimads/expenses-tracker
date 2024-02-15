@@ -23,7 +23,7 @@ function EditTransaction() {
       const response = await myApi.get(`/api/transactions/${transactionId}`);
       const { description, amount, category, type, date } = response.data;
       // Convert date to the expected format
-      const formattedDate = date.split("T")[0]; // Extracting yyyy-MM-dd from ISO string
+      const formattedDate = date.split("T")[0];
       setFormState({
         description,
         amount,
@@ -87,77 +87,81 @@ function EditTransaction() {
 
   return (
     <div className="main-content">
-      <h2>Edit Transaction</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label htmlFor="description">Description:</label>
-          <input
-            type="text"
-            value={formState.description}
-            onChange={handleChange}
-            id="description"
-            required
-          />
+      <div className="form-container">
+        <h2 className="form-title">Edit Transaction</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="description">Description:</label>
+            <input
+              type="text"
+              value={formState.description}
+              onChange={handleChange}
+              id="description"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="category">Category:</label>
+            <select
+              value={formState.category}
+              onChange={handleChange}
+              id="category"
+              required
+            >
+              <option value="">Select a category</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label htmlFor="amount">Amount:</label>
+            <input
+              type="number"
+              value={formState.amount}
+              onChange={handleChange}
+              id="amount"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="date">Date:</label>
+            <input
+              type="date"
+              value={formState.date}
+              onChange={handleChange}
+              id="date"
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="type">Type:</label>
+            <select
+              value={formState.type}
+              onChange={handleChange}
+              id="type"
+              required
+            >
+              <option value="expense">Expense</option>
+              <option value="income">Income</option>
+            </select>
+          </div>
+          <button type="submit" className="form-button">
+            Save
+          </button>
+          <button type="button" className="form-button" onClick={handleDelete}>
+            Delete
+          </button>
+        </form>
+        <div className="Sucess-alert">
+          {successMessage && (
+            <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+              {successMessage}
+            </Alert>
+          )}
         </div>
-        <div className="form-group">
-          <label htmlFor="category">Category:</label>
-          <select
-            value={formState.category}
-            onChange={handleChange}
-            id="category"
-            required
-          >
-            <option value="">Select a category</option>
-            {categories.map((category) => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label htmlFor="amount">Amount:</label>
-          <input
-            type="number"
-            value={formState.amount}
-            onChange={handleChange}
-            id="amount"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="date">Date:</label>
-          <input
-            type="date"
-            value={formState.date}
-            onChange={handleChange}
-            id="date"
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="type">Type:</label>
-          <select
-            value={formState.type}
-            onChange={handleChange}
-            id="type"
-            required
-          >
-            <option value="expense">Expense</option>
-            <option value="income">Income</option>
-          </select>
-        </div>
-        <button type="submit">Save</button>
-        <button type="button" onClick={handleDelete}>
-          Delete
-        </button>
-      </form>
-      <div className="Sucess-alert">
-        {successMessage && (
-          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
-            {successMessage}
-          </Alert>
-        )}
       </div>
     </div>
   );

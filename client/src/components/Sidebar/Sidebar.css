@@ -56,3 +56,17 @@
 .user-container .username {
   font-weight: bold; /* Make the username bold if needed */
 }
+
+.logout-btn {
+  padding-left: 10px;
+  font-size: 1rem;
+  color: #2d2c2b;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+  border: none;
+}
+
+.logout-btn:hover {
+  text-decoration: underline 3px solid #fee6e3;
+}

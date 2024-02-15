@@ -1,9 +1,12 @@
 .form-container {
-  max-width: 400px;
+  width: 600px;
   margin: 0 auto;
   margin-top: 3rem;
   padding: 20px;
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
 }
 
 .form-title {
@@ -13,12 +16,7 @@
 
 .form-info {
   font-size: 20px;
-}
-
-.login-form {
-  margin-top: 3rem;
-  display: flex; /* Add display flex */
-  flex-direction: column; /* Stack children vertically */
+  margin-bottom: 30px;
 }
 
 .form-group {
@@ -26,46 +24,43 @@
   text-align: left;
 }
 
-label {
+.form-container label {
   display: block;
   font-weight: 600;
   margin-bottom: 5px;
 }
 
-input {
+.form-container input {
   width: 100%;
   padding: 10px;
   border: 1.5px solid;
   border-radius: 7px;
+  font-size: 16px;
 }
 
-.form-group input:focus {
-  border-color: #007bff;
+.form-container select {
+  width: 100%;
+  padding: 10px;
+  border: 1.5px solid;
+  border-radius: 7px;
+  font-size: 16px;
 }
 
 p {
   font-size: 15px;
 }
 
-/* Center the button */
 .form-button {
-  margin: 0 auto; /* Add this line */
-}
-
-.form-button {
-  align-items: center;
   background-color: #fee6e3;
   border: 2px solid #111;
   border-radius: 50px;
   box-sizing: border-box;
   color: #111;
   cursor: pointer;
-  display: flex;
   font-family: Inter, sans-serif;
   font-size: 17px;
   font-weight: 600;
   height: 48px;
-  justify-content: center;
   line-height: 24px;
   max-width: 100%;
   padding: 0 25px;
@@ -75,7 +70,7 @@ p {
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  margin-bottom: 30px;
+  margin: 30px auto;
 }
 
 .form-button:after {

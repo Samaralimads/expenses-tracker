@@ -1,0 +1,16 @@
+.main-content {
+  margin-left: 250px;
+}
+
+.statistics {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.charts {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  max-width: 500px;
+}

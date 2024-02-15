@@ -165,11 +165,13 @@ function Dashboard() {
     <div className="main-content">
       <section className="statistics">
         <div>Total Balance: €{totalBalance.toFixed(2)}</div>
-        <div>Total Income: € {totalIncome.toFixed(2)}</div>
+        <div>Total Income: €{totalIncome.toFixed(2)}</div>
         <div>Total Expenses: €{totalExpenses.toFixed(2)}</div>
       </section>
-      <canvas ref={lineChartRef} />
-      <canvas ref={pieChartRef} />
+      <div className="charts">
+        <canvas ref={lineChartRef} />
+        <canvas ref={pieChartRef} />
+      </div>
       <TransactionsList
         transactions={transactions}
         categories={categories}

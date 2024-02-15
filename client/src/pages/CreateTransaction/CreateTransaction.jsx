@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./CreateTransaction.css";
 import myApi from "../../api/apiHandler";
 
 function CreateTransaction() {
@@ -67,71 +66,75 @@ function CreateTransaction() {
   };
 
   return (
-    <div className="create-transaction">
-      <h2>Add New Transaction</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Description:</label>
-          <input
-            type="text"
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Category:</label>
-          <select
-            value={category}
-            onChange={(e) => setCategory(e.target.value)}
-            required
-          >
-            <option value="">Select a category</option>
-            {categories.map((category) => (
-              <option key={category._id} value={category._id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
-        </div>
-        <div className="form-group">
-          <label>Amount:</label>
-          <input
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Date:</label>
-          <input
-            type="date"
-            value={date}
-            onChange={(e) => setDate(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="expense">Is it an expense?</label>
-          <input
-            type="checkbox"
-            checked={isExpense}
-            id="expense"
-            onChange={(e) => handleExpenseChange(e.target.checked)}
-          />
-        </div>
-        <div className="form-group">
-          <label htmlFor="income">Is it an income?</label>
-          <input
-            type="checkbox"
-            checked={isIncome}
-            id="income"
-            onChange={(e) => handleIncomeChange(e.target.checked)}
-          />
-        </div>
-        <button type="submit">Add</button>
-      </form>
+    <div className="main-content">
+      <div className="form-container">
+        <h2 className="form-title">Add New Transaction</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label>Description:</label>
+            <input
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Category:</label>
+            <select
+              value={category}
+              onChange={(e) => setCategory(e.target.value)}
+              required
+            >
+              <option value="">Select a category</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category._id}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="form-group">
+            <label>Amount:</label>
+            <input
+              type="number"
+              value={amount}
+              onChange={(e) => setAmount(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label>Date:</label>
+            <input
+              type="date"
+              value={date}
+              onChange={(e) => setDate(e.target.value)}
+              required
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="expense">Is it an expense?</label>
+            <input
+              type="checkbox"
+              checked={isExpense}
+              id="expense"
+              onChange={(e) => handleExpenseChange(e.target.checked)}
+            />
+          </div>
+          <div className="form-group">
+            <label htmlFor="income">Is it an income?</label>
+            <input
+              type="checkbox"
+              checked={isIncome}
+              id="income"
+              onChange={(e) => handleIncomeChange(e.target.checked)}
+            />
+          </div>
+          <button type="submit" className="form-button">
+            Add
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

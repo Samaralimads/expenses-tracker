@@ -8,7 +8,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
     default: "default_profile_image.jpg",
-  }, //REMEMBER TO UPDATE IMG ADDRESS HERE
+  },
 });
 
 module.exports = mongoose.model("User", userSchema);
