@@ -30,7 +30,7 @@ const app = express();
 
 // MIDDLEWARE
 app.use(helmet());
-app.use(cors({ origin: ["http://localhost:5173"] }));
+app.use(cors({ origin: [process.env.FRONTEND_ORIGIN_URL] }));
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(express.static("public"));
