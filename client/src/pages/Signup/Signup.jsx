@@ -36,8 +36,8 @@ function Signup() {
   };
 
   return (
-    <div className="signup-container">
-      <h2>Lets get started!</h2>
+    <div className="form-container">
+      <h2 className="form-title">Lets get started!</h2>
       <p>Complete all fields to create your account</p>
       <form onSubmit={handleSignupSubmit} className="signup-form">
         <div className="form-group">
@@ -74,15 +74,18 @@ function Signup() {
           />
         </div>
 
-        <button className="signup-btn" type="submit">
-          Sign Up
+        <button className="form-button" type="submit">
+          Sign up
         </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>
-        Already have an account? <Link to="/login">Login</Link>
+        Already have an account?{" "}
+        <Link to="/login" className="form-link">
+          Login
+        </Link>
       </p>
     </div>
   );

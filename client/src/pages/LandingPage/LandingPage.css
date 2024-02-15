@@ -1,0 +1,95 @@
+.dashboard-container {
+  display: flex;
+}
+
+h1 {
+  font-size: 4rem;
+  font-weight: 600;
+}
+
+.dashboard-text {
+  font-size: 30px;
+  font-weight: 200;
+}
+
+.text-section {
+  flex: 1; /* Make the text section flexible */
+  padding: 20px;
+  text-align: center;
+}
+
+.img-section {
+  flex: 1;
+  padding: 20px;
+}
+
+.landing-img {
+  max-width: 100%; /* Ensure image stays within its container */
+  height: auto;
+}
+
+.dashboard-btn {
+  align-items: center;
+  background-color: #fee6e3;
+  border: 2px solid #111;
+  border-radius: 50px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  font-family: Inter, sans-serif;
+  font-size: 17px;
+  font-weight: 600;
+  height: 48px;
+  width: 360px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.dashboard-btn:after {
+  background-color: #111;
+  border-radius: 50px;
+  content: "";
+  display: block;
+  height: 48px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform 0.2s ease-out;
+  z-index: -1;
+}
+
+.dashboard-btn:hover:after {
+  transform: translate(0, 0);
+}
+
+.dashboard-btn:active {
+  background-color: #ffdeda;
+  outline: 0;
+}
+
+.dashboard-btn:hover {
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .dashboard-btn {
+    padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  /* Apply styles for screens smaller than 768px width */
+  .container {
+    flex-direction: column; /* Stack sections vertically for small screens */
+  }
+}

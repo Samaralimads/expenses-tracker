@@ -36,9 +36,9 @@ function Login() {
   };
 
   return (
-    <div className="login-container">
-      <h2>Welcome back!</h2>
-      <p>Please log in with your credentials</p>
+    <div className="form-container">
+      <h2 className="form-title">Welcome back!</h2>
+      <p className="form-info">Please log in with your credentials</p>
       <form onSubmit={handleLoginSubmit} className="login-form">
         <div className="form-group">
           <label htmlFor="email">Email</label>
@@ -62,13 +62,18 @@ function Login() {
           />
         </div>
 
-        <button type="submit">Log In</button>
+        <button className="form-button" type="submit">
+          Log In
+        </button>
       </form>
 
       {errorMessage && <p className="error-message">{errorMessage}</p>}
 
       <p>
-        Don't have an account yet? <Link to="/signup">Sign Up</Link>
+        Don't have an account yet?{" "}
+        <Link to="/signup" className="form-link">
+          Sign Up
+        </Link>
       </p>
     </div>
   );
