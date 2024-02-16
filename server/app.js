@@ -21,9 +21,7 @@ const Category = require("./models/Category");
 
 //CONNECT TO DATABASE
 mongoose
-  .connect(
-    "mongodb+srv://admin:UFk7xJ6PF6rTIWwv@cluster0.baadxri.mongodb.net/expense-tracker"
-  )
+  .connect(process.env.MONGODB_URI)
   .then((x) => console.log(`Connected to Database: "${x.connections[0].name}"`))
   .catch((err) => console.error("Error connecting to MongoDB", err));
 

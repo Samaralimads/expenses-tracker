@@ -11,10 +11,13 @@ function LandingPage() {
           <p className="dashboard-text">
             Zenith is the ultimate expense tracker for modern adults seeking to
             conquer their financial goals and reach the pinnacle of economic
-            independence. Our intuitive platform lets you effortlessly monitor
-            your spending, save smarter, and make savvy decisions with
-            confidence.
+            independence. <br />
+            Our intuitive platform lets you effortlessly monitor your spending,
+            save smarter, and make savvy decisions with confidence.
           </p>
+          <Link to="/signup" className="dashboard-btn">
+            Get Started
+          </Link>
         </section>
         <section className="img-section">
           <img
@@ -24,9 +27,6 @@ function LandingPage() {
           />
         </section>
       </div>
-      <Link to="/signup" className="dashboard-btn">
-        Get Started
-      </Link>
     </div>
   );
 }

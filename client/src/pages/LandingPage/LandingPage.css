@@ -1,5 +1,6 @@
 .dashboard-container {
   display: flex;
+  align-items: center;
 }
 
 h1 {
@@ -8,14 +9,18 @@ h1 {
 }
 
 .dashboard-text {
-  font-size: 30px;
+  font-size: 33px;
   font-weight: 200;
 }
 
 .text-section {
-  flex: 1; /* Make the text section flexible */
-  padding: 20px;
+  display: flex;
+  flex: 1;
+  padding: 103px;
   text-align: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .img-section {
@@ -29,6 +34,7 @@ h1 {
 }
 
 .dashboard-btn {
+  margin-top: 28px;
   align-items: center;
   background-color: #fee6e3;
   border: 2px solid #111;
@@ -81,15 +87,8 @@ h1 {
   outline: 0;
 }
 
-@media (min-width: 768px) {
-  .dashboard-btn {
-    padding: 0 40px;
-  }
-}
-
 @media screen and (max-width: 768px) {
-  /* Apply styles for screens smaller than 768px width */
   .container {
-    flex-direction: column; /* Stack sections vertically for small screens */
+    flex-direction: column;
   }
 }

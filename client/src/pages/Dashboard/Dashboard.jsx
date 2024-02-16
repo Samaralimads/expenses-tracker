@@ -169,8 +169,12 @@ function Dashboard() {
         <div>Total Expenses: €{totalExpenses.toFixed(2)}</div>
       </section>
       <div className="charts">
-        <canvas ref={lineChartRef} />
-        <canvas ref={pieChartRef} />
+        <div className="chart-container">
+          <canvas ref={lineChartRef} />
+        </div>
+        <div className="chart-container">
+          <canvas ref={pieChartRef} />
+        </div>
       </div>
       <TransactionsList
         transactions={transactions}

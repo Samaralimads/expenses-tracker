@@ -4,7 +4,7 @@
   left: 0;
   height: 94vh;
   width: 250px;
-  background-color: #f2f2f2;
+  background-color: #fbede0;
   color: #2d2c2b;
   padding: 20px;
   box-sizing: border-box;
@@ -36,28 +36,34 @@
   color: #2d2c2b;
   padding: 10px;
   display: block;
+  font-size: 18px;
+  margin-bottom: 10px;
 }
 
 .welcome-back {
   color: #2d2c2b;
   margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 18px;
 }
 .user-container {
+  font-size: 22px;
+  margin-top: 20px;
+  margin-bottom: 6rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .user-container .avatar {
-  margin-right: 10px; /* Add some space between avatar and username */
+  margin-right: 10px;
 }
 
 .user-container .username {
-  font-weight: bold; /* Make the username bold if needed */
+  font-weight: bold;
 }
 
 .logout-btn {
+  background-color: #fbede0;
   padding-left: 10px;
   font-size: 1rem;
   color: #2d2c2b;
@@ -65,8 +71,9 @@
   font-weight: 600;
   font-size: 15px;
   border: none;
+  margin-top: 5rem;
 }
 
 .logout-btn:hover {
-  text-decoration: underline 3px solid #fee6e3;
+  text-decoration: underline 3px solid #422800;
 }
