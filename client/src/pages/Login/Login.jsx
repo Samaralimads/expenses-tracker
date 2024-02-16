@@ -8,9 +8,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
-
+  //call useState hook and provide initial value
+  //returns an array with current state value and a function to update that value.
   const navigate = useNavigate();
 
+  // Accessing authentication context
   const { storeToken, authenticateUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);

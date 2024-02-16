@@ -24,7 +24,7 @@ h1 {
 }
 
 .landing-img {
-  max-width: 100%; /* Ensure image stays within its container */
+  width: 44rem;
   height: auto;
 }
 

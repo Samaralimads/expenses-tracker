@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import myApi from "../api/apiHandler";
 
+// Create an authentication context
 const AuthContext = React.createContext();
 
 function AuthProviderWrapper({ children }) {

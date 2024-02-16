@@ -19,7 +19,7 @@ function LandingPage() {
         <section className="img-section">
           <img
             className="landing-img"
-            src="/placeholder.png"
+            src="/landing.png"
             alt="placeholderimg"
           />
         </section>
