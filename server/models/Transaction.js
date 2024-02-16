@@ -11,6 +11,7 @@ const transactionSchema = new mongoose.Schema({
   },
   type: { type: String, enum: ["income", "expense"], required: true },
   userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  //reference to the User model, establishing a one-to-many relationship
 });
 
 module.exports = mongoose.model("Transaction", transactionSchema);

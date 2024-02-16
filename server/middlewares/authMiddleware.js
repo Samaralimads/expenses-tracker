@@ -5,10 +5,10 @@ async function authMiddleware(req, res, next) {
   try {
     console.log(req.headers);
 
-    // Extract the authorization header from the request
+    //get the authorization header from the request
     const authorizationHeader = req.headers.authorization;
 
-    // Check if authorization header exists
+    // Check if exists
     if (!authorizationHeader) {
       return res.status(400).json({ message: "No authorization found" });
     }
@@ -28,7 +28,7 @@ async function authMiddleware(req, res, next) {
       return res.status(401).json({ message: "Denied!" });
     }
 
-    // Attach the user object to the request object for further processing by route handlers
+    // Attach the user object to the request object
     req.user = user;
     // Call the next middleware or route handler in the chain
     next();

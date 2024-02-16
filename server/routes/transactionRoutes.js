@@ -6,6 +6,7 @@ const Category = require("../models/Category");
 // Get all transactions of the current user, sorted by date
 router.get("/", async (req, res, next) => {
   try {
+    //look in transaction collectionif userId matches ID of authenticated user
     const transactions = await Transaction.find({ userId: req.user.id }).sort({
       date: "desc",
     });
@@ -52,13 +53,17 @@ router.get("/:id", async (req, res) => {
 // Add a new transaction
 router.post("/", async (req, res, next) => {
   try {
+    // Extract transaction data from request body
     const { description, amount, date, category, type } = req.body;
+
+    //Find and extract the category ID from the category object
     const categoryObject = await Category.findOne({ _id: category });
     if (!categoryObject) {
       return res.status(400).json({ message: "Invalid category" });
     }
     const categoryId = categoryObject._id;
 
+    // Create a new transaction object
     const newTransaction = new Transaction({
       description,
       amount,
@@ -67,6 +72,8 @@ router.post("/", async (req, res, next) => {
       type,
       userId: req.user.id,
     });
+
+    // Save the transaction to the database
     const transaction = await newTransaction.save();
     res.status(201).json({
       message: "New transaction created",
@@ -77,8 +84,9 @@ router.post("/", async (req, res, next) => {
 });
 
 // PUT /api/transactions/:id
-// Updates transaction
+// Updates a specific transaction
 router.put("/:id", async (req, res, next) => {
+  // Extract data from request body
   const { description, amount, date, category, type } = req.body;
   try {
     let transaction = await Transaction.findById(req.params.id);
@@ -88,10 +96,11 @@ router.put("/:id", async (req, res, next) => {
     if (transaction.userId.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }
+    // Update the transaction with the provided data
     transaction = await Transaction.findByIdAndUpdate(
       req.params.id,
       { description, amount, date, category, type },
-      { new: true }
+      { new: true } // Return the updated document
     );
     res.json(transaction);
   } catch (err) {
@@ -103,10 +112,13 @@ router.put("/:id", async (req, res, next) => {
 // Delete a transaction
 router.delete("/:id", async (req, res, next) => {
   try {
+    // Find the transaction by ID
     let transaction = await Transaction.findById(req.params.id);
+    // Check if exists
     if (!transaction) {
       return res.status(404).json({ msg: "Transaction not found" });
     }
+    // Check if belongs to the authenticated user
     if (transaction.userId.toString() !== req.user.id) {
       return res.status(401).json({ msg: "Not authorized" });
     }
