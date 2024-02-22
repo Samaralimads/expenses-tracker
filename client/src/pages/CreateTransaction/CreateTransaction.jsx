@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import myApi from "../../api/apiHandler";
+import Alert from "@mui/material/Alert";
+import CheckIcon from "@mui/icons-material/Check";
 
 function CreateTransaction() {
   const [description, setDescription] = useState("");
@@ -9,6 +11,7 @@ function CreateTransaction() {
   const [categories, setCategories] = useState([]);
   const [isExpense, setIsExpense] = useState(false);
   const [isIncome, setIsIncome] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
 
   useEffect(() => {
     myApi
@@ -59,7 +62,11 @@ function CreateTransaction() {
       setDate("");
       setIsExpense(false);
       setIsIncome(false);
-      //ADD LATER navigate the user to transactions page or show a success message
+
+      setSuccessMessage("Transaction has been successfully created.");
+      setTimeout(() => {
+        setSuccessMessage("");
+      }, 4000);
     } catch (error) {
       console.error("Error adding transaction:", error);
     }
@@ -134,6 +141,11 @@ function CreateTransaction() {
             Add
           </button>
         </form>
+        {successMessage && (
+          <Alert icon={<CheckIcon fontSize="inherit" />} severity="success">
+            {successMessage}
+          </Alert>
+        )}
       </div>
     </div>
   );
