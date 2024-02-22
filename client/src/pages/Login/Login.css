@@ -51,7 +51,7 @@ p {
 }
 
 .form-button {
-  background-color: #fee6e3;
+  background-color: #fef0e6;
   border: 2px solid #111;
   border-radius: 50px;
   box-sizing: border-box;
@@ -93,7 +93,7 @@ p {
 }
 
 .form-button:active {
-  background-color: #ffdeda;
+  background-color: #fef0e6;
   outline: 0;
 }
 
@@ -117,5 +117,5 @@ p {
 }
 
 .form-link:hover {
-  text-decoration: underline 3px solid #fee6e3;
+  text-decoration: underline 3px solid #fef0e6;
 }

@@ -59,7 +59,7 @@ function TransactionsList({ categories, transactions, setTransactions }) {
     <div className="transactions-container">
       <table className="transactions-table">
         <thead>
-          <tr>
+          <tr className="table-header">
             <th>Category</th>
             <th>Description</th>
             <th onClick={sortByDate}>

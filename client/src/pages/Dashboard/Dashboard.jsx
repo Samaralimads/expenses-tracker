@@ -48,6 +48,7 @@ function Dashboard() {
     fetchTransactionsAndCategories();
   }, []);
 
+  //CHARTS
   const prepareLineChartData = () => {
     const months = [
       "January",
@@ -86,7 +87,6 @@ function Dashboard() {
     };
   };
 
-  //CHARTS
   const preparePieChartData = () => {
     const expensesByCategory = {};
     categories.forEach((category) => {
@@ -163,11 +163,17 @@ function Dashboard() {
 
   return (
     <div className="main-content">
-      <section className="statistics">
-        <div>Total Balance: €{totalBalance.toFixed(2)}</div>
-        <div>Total Income: €{totalIncome.toFixed(2)}</div>
-        <div>Total Expenses: €{totalExpenses.toFixed(2)}</div>
-      </section>
+      <div className="statistics">
+        <div className="statistic-card">
+          Total Balance: €{totalBalance.toFixed(2)}
+        </div>
+        <div className="statistic-card">
+          Total Income: €{totalIncome.toFixed(2)}
+        </div>
+        <div className="statistic-card">
+          Total Expenses: €{totalExpenses.toFixed(2)}
+        </div>
+      </div>
       <div className="charts">
         <div className="chart-container">
           <canvas ref={lineChartRef} />
