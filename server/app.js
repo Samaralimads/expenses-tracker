@@ -2,7 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
-const PORT = 5005;
+const PORT = process.env.PORT || 5001;
 const cors = require("cors");
 const mongoose = require("mongoose");
 const helmet = require("helmet");
@@ -21,7 +21,7 @@ const Category = require("./models/Category");
 
 //CONNECT TO DATABASE
 mongoose
-  .connect(process.env.MONGODB_URI)
+  .connect(process.env.MONGO_URL)
   .then((x) => console.log(`Connected to Database: "${x.connections[0].name}"`))
   .catch((err) => console.error("Error connecting to MongoDB", err));
 
