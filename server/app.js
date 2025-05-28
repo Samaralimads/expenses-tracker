@@ -21,10 +21,7 @@ const Category = require("./models/Category");
 
 //CONNECT TO DATABASE
 mongoose
-  .connect(process.env.MONGO_URL, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URL)
   .then((x) => {
     console.log(`Connected to Database: "${x.connections[0].name}"`);
 
