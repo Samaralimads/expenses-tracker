@@ -21,31 +21,38 @@ const Category = require("./models/Category");
 
 //CONNECT TO DATABASE
 mongoose
-  .connect(process.env.MONGO_URL)
-  .then((x) => console.log(`Connected to Database: "${x.connections[0].name}"`))
-  .catch((err) => console.error("Error connecting to MongoDB", err));
+  .connect(process.env.MONGO_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then((x) => {
+    console.log(`Connected to Database: "${x.connections[0].name}"`);
 
-// INITIALIZE EXPRESS APP
-const app = express();
+    // INITIALIZE EXPRESS APP
+    const app = express();
 
-// MIDDLEWARE
-app.use(helmet());
-app.use(cors({ origin: [process.env.FRONTEND_ORIGIN_URL] }));
-app.use(express.json());
-app.use(morgan("dev"));
-app.use(express.static("public"));
-app.use(express.urlencoded({ extended: false }));
-app.use(cookieParser());
+    // MIDDLEWARE
+    app.use(helmet());
+    app.use(cors({ origin: [process.env.FRONTEND_ORIGIN_URL] }));
+    app.use(express.json());
+    app.use(morgan("dev"));
+    app.use(express.static("public"));
+    app.use(express.urlencoded({ extended: false }));
+    app.use(cookieParser());
 
-//ROUTES
-app.use("/api/auth", authRoutes);
-app.use("/api/transactions", authMiddleware, transactionRoutes);
-app.use("/api/categories", categoryRoutes);
+    //ROUTES
+    app.use("/api/auth", authRoutes);
+    app.use("/api/transactions", authMiddleware, transactionRoutes);
+    app.use("/api/categories", categoryRoutes);
 
-//ERROR HANDLING
-app.use(errorHandler);
+    //ERROR HANDLING
+    app.use(errorHandler);
 
-// START SERVER
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
-});
+    // START SERVER
+    app.listen(PORT, () => {
+      console.log(`Server listening on port ${PORT}`);
+    });
+  })
+  .catch((err) => {
+    console.error("Error connecting to MongoDB:", err);
+  });
