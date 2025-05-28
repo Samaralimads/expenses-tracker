@@ -39,4 +39,4 @@ async function authMiddleware(req, res, next) {
 module.exports = authMiddleware;
 
 //The middleware extracts the user's ID from the JWT and adds it to the request object (req.user),
-//allowing middleware functions or route handlers to access the authenticated user's ID.;
+//allowing middleware functions or route handlers to access the authenticated user's ID.
