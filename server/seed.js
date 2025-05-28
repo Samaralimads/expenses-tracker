@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 const Category = require("./models/Category");
 
-mongoose.connect(
-  process.env.MONGO_URL || "mongodb://localhost:27017/expense-tracker-db"
-);
+mongoose.connect(process.env.MONGO_URL);
 
 const categories = [
   { name: "Housing", icon: "/home1.png" },
