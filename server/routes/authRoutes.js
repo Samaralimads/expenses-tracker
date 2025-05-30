@@ -38,28 +38,36 @@ router.post("/signup", async (req, res, next) => {
 router.post("/login", async (req, res, next) => {
   try {
     const { email, password } = req.body;
+    console.log("Login attempt:", { email, password }); // Log do que recebeu
+
     if (!email || !password) {
+      console.log("Faltando email ou senha");
       return res
         .status(400)
         .json({ message: "Please input all the required fields." });
     }
+
     const existingUser = await User.findOne({ email }).select(
       "password username email"
     );
-    console.log(existingUser);
+    console.log("Usuário encontrado no banco:", existingUser);
+
     if (!existingUser) {
+      console.log("Usuário não encontrado");
       return res.status(400).json({ message: "Wrong credentials" });
     }
+
     const matchingPassword = await bcrypt.compare(
       password,
       existingUser.password
     );
+    console.log("Senha bate?", matchingPassword);
+
     if (!matchingPassword) {
+      console.log("Senha incorreta");
       return res.status(400).json({ message: "Wrong credentials" });
     }
-    /**
-     * We can login the user
-     */
+
     const token = jwt.sign(
       { _id: existingUser._id },
       process.env.TOKEN_SECRET,
@@ -68,8 +76,11 @@ router.post("/login", async (req, res, next) => {
         expiresIn: "7d",
       }
     );
+    console.log("Login OK, token criado");
+
     res.json({ authToken: token });
   } catch (err) {
+    console.error("Erro na rota login:", err);
     next(err);
   }
 });
