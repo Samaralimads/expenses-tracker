@@ -56,8 +56,8 @@ function Login() {
           type="button"
           className="demo-button"
           onClick={() => {
-            setEmail("demo@example.com");
-            setPassword("123456");
+            setEmail("john@example.com");
+            setPassword("password123");
           }}
         >
           Use demo login
