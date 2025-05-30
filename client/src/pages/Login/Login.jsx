@@ -41,6 +41,29 @@ function Login() {
     <div className="form-container">
       <h2 className="form-title">Welcome back!</h2>
       <p className="form-info">Please log in with your credentials</p>
+
+      <div className="demo-banner">
+        <p>
+          <strong>Demo login available:</strong>
+        </p>
+        <p>
+          Email: <code>john@example.com</code>
+        </p>
+        <p>
+          Password: <code>password123</code>
+        </p>
+        <button
+          type="button"
+          className="demo-button"
+          onClick={() => {
+            setEmail("demo@example.com");
+            setPassword("123456");
+          }}
+        >
+          Use demo login
+        </button>
+      </div>
+
       <form onSubmit={handleLoginSubmit} className="login-form">
         <div className="form-group">
           <label htmlFor="email">Email</label>

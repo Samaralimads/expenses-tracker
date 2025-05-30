@@ -1,3 +1,39 @@
+.demo-banner {
+  background-color: #fef0e6;
+  border: 2px solid #111;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-size: 15px;
+}
+
+.demo-banner code {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 2px 6px;
+  border-radius: 5px;
+  font-family: monospace;
+  font-size: 14px;
+}
+
+.demo-button {
+  background-color: #fff;
+  border: 2px solid #111;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 10px 25px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.demo-button:hover {
+  background-color: #111;
+  color: #fff;
+}
+
 .form-container {
   width: 600px;
   margin: 0 auto;
