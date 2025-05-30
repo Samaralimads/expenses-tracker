@@ -32,11 +32,19 @@ function AuthProviderWrapper({ children }) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
+          setAuthError(null);
         })
         .catch((error) => {
-          if (error) {
+          console.error("Error verifying token:", error);
+
+          if (
+            error.response &&
+            error.response.data &&
+            error.response.data.message
+          ) {
             setAuthError(error.response.data.message);
-            return;
+          } else {
+            setAuthError("Unknown error while verifying authentication");
           }
           // If the server sends an error response (invalid token)
           // Update state variables
@@ -49,6 +57,7 @@ function AuthProviderWrapper({ children }) {
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
+      setAuthError(null);
     }
   };
 

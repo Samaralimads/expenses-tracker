@@ -17,6 +17,7 @@ function CreateTransaction() {
     myApi
       .get("/api/categories")
       .then((response) => {
+        console.log("Fetched categories:", response.data); // ← Add this
         setCategories(response.data);
       })
       .catch((error) => {
